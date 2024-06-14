@@ -12,9 +12,9 @@ const BeforeDashboard: React.FC = () => {
   return (
     <div className={baseClass}>
       <Banner className={`${baseClass}__banner`} type="success">
-        <h4>Welcome to your dashboard!</h4>
+        <h4>Bienvenido al panel de control!</h4>
       </Banner>
-      Here&apos;s what to do next:
+      Aquí podrás modificar y controlar tu tienda en línea.
       <ul className={`${baseClass}__instructions`}>
         <li>
           <SeedButton />

@@ -36,9 +36,10 @@ const LoginForm: React.FC = () => {
       try {
         await login(data)
         if (redirect?.current) router.push(redirect.current as string)
-        else router.push('/account')
+        else router.push('/')
+        window.location.href = "/"
       } catch (_) {
-        setError('There was an error with the credentials provided. Please try again.')
+        setError('Error en las crendenciales, por favor intenta de nuevo.')
       }
     },
     [login, router],
@@ -46,15 +47,11 @@ const LoginForm: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
-      <p>
-        {`This is where your customers will login to manage their account, review their order history, and more. To manage all users, `}
-        <Link href="/admin/collections/users">login to the admin dashboard</Link>
-        {'.'}
-      </p>
+
       <Message error={error} className={classes.message} />
       <Input
         name="email"
-        label="Email Address"
+        label="Correo electrónico"
         required
         register={register}
         error={errors.email}
@@ -63,7 +60,7 @@ const LoginForm: React.FC = () => {
       <Input
         name="password"
         type="password"
-        label="Password"
+        label="Contraseña"
         required
         register={register}
         error={errors.password}
@@ -75,10 +72,10 @@ const LoginForm: React.FC = () => {
         disabled={isLoading}
         className={classes.submit}
       />
-      <div>
-        <Link href={`/create-account${allParams}`}>Create an account</Link>
+      <div className={classes.link}>
+        <Link href={`/create-account${allParams}`}>Crear cuenta</Link>
         <br />
-        <Link href={`/recover-password${allParams}`}>Recover your password</Link>
+        <Link href={`/recover-password${allParams}`}>Recuperar contraseña</Link>
       </div>
     </form>
   )
